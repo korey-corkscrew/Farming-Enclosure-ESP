@@ -987,10 +987,6 @@ void serialEvent() {
 void setup() {
   Serial.begin(9600);
 
-  Serial.println('\0');
-
-  Serial.println(html.length());
-
   // Initialize SD card module
   // This function will not return until a connection is made.
   initSD();
