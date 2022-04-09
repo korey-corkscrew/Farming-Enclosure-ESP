@@ -64,6 +64,8 @@ String wifiCredentialsFile = "CREDENTIALS.TXT";
 String inputString = "";         // a String to hold incoming data
 bool stringComplete = false;  // whether the string is complete
 
+bool updated = false;
+
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "time.nist.gov", 0, 60000);
 unsigned long unix_epoch = 0;
@@ -554,6 +556,8 @@ bool setEnclosureDesiredData(int enclosureNumber, String data) {
   // Close the file
   myFile.close();
 
+  updated = true;
+
   return true;
 }
 
@@ -997,8 +1001,6 @@ void setup() {
   
   // reserve 200 bytes for the inputString:
   inputString.reserve(200);  
-
-//  getWebPage();
 }
 
 // -------------------------------------------------------------
@@ -1027,5 +1029,10 @@ void loop() {
     // clear the string
     inputString = "";
     stringComplete = false;
+  }
+
+  if(updated) {
+    Serial.println();
+    updated = false;
   }
 }
