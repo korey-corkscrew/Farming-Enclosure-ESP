@@ -1,25 +1,3 @@
-#include <EEPROM.h>
-
-/*
-  SD card read/write
-
-  This example shows how to read and write data to and from an SD card file
-  The circuit:
-   SD card attached to SPI bus as follows:
- ** MOSI - pin 11
- ** MISO - pin 12
- ** CLK - pin 13
- ** CS - pin 4
-
-  created   Nov 2010
-  by David A. Mellis
-  modified 9 Apr 2012
-  by Tom Igoe
-
-  This example code is in the public domain.
-
-*/
-
 #include <SPI.h>
 #include <SD.h>
 #include <ESP8266WiFi.h>
@@ -33,19 +11,10 @@
 #include <WiFiUdp.h>
 #include <NTPClient.h>
 
-//#ifndef STASSID
-//#define STASSID "8249FB"
-//#define STAPSK  "52T76B2B00184"
-//#endif
 
 #define SET false
 #define REC true
 #define API_KEY "a7fUD3411gE"
-#define SSID_ADDRESS      0x100
-#define PASSWORD_ADDRESS  0x200
-
-//const char *ssid = STASSID;
-//const char *password = STAPSK;
 
 ESP8266WebServer server(80);
 File myFile;
